@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="/static/img/favicon.png" type="image/png">
+    <title>{% block title %}MyFirstPC{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Footer-basic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Social-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  </head>
+  <body>
+  {% block body %}
+    <nav class="navbar navbar-light navbar-expand-md bg-light border-dark rounded shadow sticky-top">
+        <div class="container-fluid"><a class="navbar-brand text-uppercase" >
+          <a href="{% url 'shop:product_list' %}"><img src="{% static 'img/mfpc2.jpg' %}" width="180px"></a>
+          <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <h5>Bienvenido a nuestra pagina {{ user.username }}</h5>
+                <ul class="nav navbar-nav ml-auto">
+                    {% with total_items=cart|length %}
+                      {% if cart|length > 0 %}
+                      <p class="navbar-text navbar-right px-5">
+                        <span style="font-size:16px" class="glyphicon glyphicon-shopping-cart"></span>
+                        <a href="{% url 'cart:cart_detail' %}">
+                          {{ total_items }} item{{ total_items|pluralize }},
+                          ${{ cart.get_total_price }}
+                        </a>
+                      </p>
+                      {% else %}
+                        <p class="navbar-text navbar-right mx-3">Tu carrito esta vacio.</p>
+                      {% endif %}
+                    {% endwith %}
+                    {% if user.is_staff %}
+                      <li class="nav-item" role="presentation"><a class="nav-link text-dark border rounded border-white" href="{% url 'admin:index' %}" style="font-family: Acme, sans-serif;background-color: #eeeeee;"><strong>ADMINISTRAR</strong></a></li>
+                    {% endif %}
+                    <li class="nav-item" role="presentation"><a class="nav-link text-dark border rounded border-white" href="{% url 'shop:product_list' %}" style="font-family: Acme, sans-serif;background-color: #eeeeee;"><strong>LISTA PRODUCTOS</strong></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-dark border rounded border-white" href="{% static 'empresa/empresa.html' %}" style="font-family: Acme, sans-serif;background-color: #eeeeee;"><strong>EMPRESA</strong></a></li>
+                    {% if user.is_active == True %}
+                      <a href="{% url 'logout' %}" class="btn btn-outline-danger mx-1 my-auto rounded btn-sm px-1 py-2" type="submit">SALIR</a></div>
+                    {% endif %}
+                    {% if user.is_active != True %}
+                        <a href="{% url 'login' %}" class="btn btn-outline-success mx-1 rounded my-auto" type="button">INICIAR SESIÓN</a></div>
+                    {% endif %}
+
+
+                    
+                </ul>
+        </div>
+    </nav>
+  
+    <div class="container-fluid text-center rounded py-3">
+      <div id="promo rounded" style="background-image:url({% static 'img/hardware2.jpg' %})">
+        <div class="container py-2">
+          <div class="jumbotron rounded my-auto">
+            <h1 style="font-family: Acme, sans-serif;"><strong>MY FIRST PC</strong></h1>
+            <h4 class="text-center text-dark"><br>&nbsp;MY FIRST PC surge como respuesta ante la ausencia de información al momento de comprar un computador, es decir, normalmente un usuario adquiere un equipo que no está ajustado a sus necesidades o simplemente como consecuencia de estrategias
+            de venta, dado que el objetivo principal es vender más no asesorar, nuestra meta es asesorar nuestro cliente recibiendo soporte al momento de la compra, evitando costos innecesarios y asegurando un rendimiento ajustado a sus requerimientos.<br></h4>
+          </div>
+        </div>
+      <div class="bd-example"></div>
+      </div>
+    </div>
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    {% block footer %}
+    <div class="footer-basic" style="padding: auto;width: auto;">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-email"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul>
+                <li><a href="/Primer sprint/index.html">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Acerca de nosotros</a></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <p class="copyright">MY FIRST PC © 2019</p>
+        </footer>
+    </div>
+    {% endblock %}
+    {% endblock %}
+    <script src="{% static 'js/jquery.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" charset="utf-8"></script>
+    
+  </body>
+</html>
