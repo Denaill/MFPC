@@ -2,11 +2,10 @@
 import os
 from django.core.urlresolvers import reverse_lazy
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-import django_heroku
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-#ACTIVATING HEROKU
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "yj6o@&vrar6^l1u68!bxumj@xr4&5)zzk!h1qw&63^&@2d3w@#"
 
@@ -94,7 +93,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT= os.path.join(BASE_DIR + 'static')
+STATIC_ROOT = os.path.join(BASE_DIR + '/static')
 
 LOGIN_REDIRECT_URL = reverse_lazy('shop:product_list')
 LOGOUT_REDIRECT_URL = reverse_lazy('shop:product_list')
