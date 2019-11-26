@@ -33,11 +33,11 @@
     </div>
 
     <div class="row-fluid rounded mx-5 px-4">
-    <h1>Llenar el siguiente formulario: </h1>
+    <h1>Confirmar el siguiente formulario: </h1>
       <form action="." class="form-horizontal" method="post">
         {% csrf_token %}
 
-        {% for field in form %}
+        <!--{% for field in form %}
           <div class="form-group">
             <label class="control-label col-sm-5 " for="{{ field.id_for_label }}">{{ field.label }}</label>
             <div class="controls col-sm-6 mx-5">
@@ -45,8 +45,103 @@
             </div>
             <span style="color:red">{{ field.errors.as_text }}</span>
           </div>
-        {% endfor %}
-
+        {% endfor %}-->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label >Nombre</label>
+                    <input class="form-control" type="text" name="first_name" value="{{user.first_name}}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label >Apellidos</label>
+                    <input class="form-control" type="text" name="last_name" value="{{user.last_name}}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label >Correo</label>
+                    <input class="form-control" type="text" name="email" value="{{user.email}}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label >Dirección</label>
+                    <input class="form-control" type="text" name="address" value="{{user.address}}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label >Ciudad</label>
+                    <select class="form-control" type="text" name="city" value="{{user.city}}">
+                        <option>Armenia</option>
+                        <option>Barrancabermeja</option>
+                        <option>Barranquilla</option>
+                        <option>Bogota</option>
+                        <option>Bucaramanga</option>
+                        <option>Buga</option>
+                        <option>Cali</option>
+                        <option>Cartagena</option>
+                        <option>Chia</option>
+                        <option>Cucuta</option>
+                        <option>Duitama</option>
+                        <option>Florencia</option>
+                        <option>Fusagasugá</option>
+                        <option>Girardot</option>
+                        <option>Honda</option>
+                        <option>Ibagué</option>
+                        <option>Ipiales</option>
+                        <option>Jamundí</option>
+                        <option>Leticia</option>
+                        <option>Manizales</option>
+                        <option>Mariquita</option>
+                        <option>Medellin</option>
+                        <option>Mompox</option>
+                        <option>Monteria</option>
+                        <option>Murillo</option>
+                        <option>Neiva</option>
+                        <option>Pamplona</option>
+                        <option>Pasto</option>
+                        <option>Pereira</option>
+                        <option>Riohacha</option>
+                        <option>San Andrés y Providencia</option>
+                        <option>San Antero</option>
+                        <option>Santa Marta</option>
+                        <option>Santafé de Antioquia</option>
+                        <option>Sevilla</option>
+                        <option>Sincelejo</option>
+                        <option>Sogamoso</option>
+                        <option>Tabio</option>
+                        <option>Tocancipá</option>
+                        <option>Tolú</option>
+                        <option>Tuluá</option>
+                        <option>Tumaco</option>
+                        <option>Tunja</option>
+                        <option>Valledupar</option>
+                        <option>Villavicencio</option>
+                        <option>Yopal</option>
+                        <option>Zipaquirá</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label >Codigo postal</label>
+                    <input class="form-control" type="text" name="postal_code">
+                </div>
+            </div>
+        </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10 text-center">
             <input type="submit" value="Comprar" class="btn btn-outline-success">

@@ -1,0 +1,78 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+  Foro
+{% endblock %}
+{% block myfirstpc %}
+    <div class="container-fluid text-center rounded py-3">
+      <div id="promo rounded" style="background-image:url({% static 'img/hardware2.jpg' %})">
+        <div class="container py-2">
+          <div class="jumbotron rounded my-auto">
+            <h1 style="font-family: Acme, sans-serif;"><strong>FORO</strong></h1>
+          </div>
+        </div>
+      <div class="bd-example"></div>
+      </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div style="width: auto;height: auto;min-width: 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <div class="rounded p-3 mb-2 bg-success text-white">Asunto</div>
+                                    </td>
+                                    <td>
+                                        <div class="rounded p-3 mb-2 bg-success text-white">Usuario</div>
+                                    </td>
+                                    <td>
+                                        <div class="rounded p-3 mb-2 bg-success text-white">Fecha de publicación</div>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if object_list %}
+                                {% for foro in object_list %}
+                                <tr>
+                                    <td>{{ foro.asunto }}</td>
+                                    <td>{{ foro.nombre_usuario }}</td>
+                                    <td>{{ foro.fecha_pub }}</td>
+                                    <td><a class="rounded btn btn-outline-success btn-sm" href="{% url 'foro:foro_vermas' foro.id%}">Ver más</a>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <h1> No existe ninguna publicación </h1>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <ul class="pager">
+            <div class="row">
+                <div class="col text-center">
+                    <li>
+                        {% if page_obj.has_previous %}
+                        <a class="rounded btn btn-dark p-1" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                        {% endif %}
+                    </li>
+                </div>
+                <div class="col text-center">
+                    <li>
+                        {% if page_obj.has_next %}
+                        <a class="rounded btn btn-dark p-1" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                        {% endif %}
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div class="container text-center">
+        <a class="btn btn-outline-success rounded "type="button" href="{% url 'foro:foro_nuevo' %}">Agregar asunto</a>
+    </div>
+{% endblock %}

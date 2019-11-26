@@ -10,11 +10,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "yj6o@&vrar6^l1u68!bxumj@xr4&5)zzk!h1qw&63^&@2d3w@#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+#User model
+AUTH_USER_MODEL = 'usuarios.User'
 # Application definition
 
 INSTALLED_APPS = (
@@ -29,6 +30,8 @@ INSTALLED_APPS = (
     'cart',
     'orders',
     'coupons',
+    'foro',
+    'usuarios',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -93,7 +96,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR + '/static')
 
 LOGIN_REDIRECT_URL = reverse_lazy('shop:product_list')
 LOGOUT_REDIRECT_URL = reverse_lazy('shop:product_list')

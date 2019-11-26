@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
-from usuarios.forms import RegistroForm
-from django.contrib.auth.models import User
+from .forms import RegistroForm
 from django.core.urlresolvers import reverse_lazy
+from .models import User
 # Create your views here.
 
 class RegistroUsuario(CreateView):

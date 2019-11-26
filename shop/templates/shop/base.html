@@ -42,10 +42,12 @@
                     {% if user.is_staff %}
                       <li class="nav-item" role="presentation"><a class="nav-link text-dark border rounded border-white" href="{% url 'admin:index' %}" style="font-family: Acme, sans-serif;background-color: #eeeeee;"><strong>ADMINISTRAR</strong></a></li>
                     {% endif %}
+                    <li class="nav-item" role="presentation"><a class="nav-link text-dark border rounded border-white" href="{% url 'coupons:promociones' %}" style="font-family: Acme, sans-serif;background-color: #eeeeee;"><strong>PROMOCIONES</strong></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-dark border rounded border-white" href="{% url 'foro:foro_listar' %}" style="font-family: Acme, sans-serif;background-color: #eeeeee;"><strong>FORO</strong></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-dark border rounded border-white" href="{% url 'shop:product_list' %}" style="font-family: Acme, sans-serif;background-color: #eeeeee;"><strong>LISTA PRODUCTOS</strong></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-dark border rounded border-white" href="{% static 'empresa/empresa.html' %}" style="font-family: Acme, sans-serif;background-color: #eeeeee;"><strong>EMPRESA</strong></a></li>
                     {% if user.is_active == True %}
-                      <a href="{% url 'logout' %}" class="btn btn-outline-danger mx-1 my-auto rounded btn-sm px-1 py-2" type="submit">SALIR</a></div>
+                      <a href="/admin/logout" class="btn btn-outline-danger mx-1 my-auto rounded btn-sm px-1 py-2" type="submit">SALIR</a></div>
                     {% endif %}
                     {% if user.is_active != True %}
                         <a href="{% url 'login' %}" class="btn btn-outline-success mx-1 rounded my-auto" type="button">INICIAR SESIÓN</a></div>
@@ -56,7 +58,7 @@
                 </ul>
         </div>
     </nav>
-  
+    {% block myfirstpc %}
     <div class="container-fluid text-center rounded py-3">
       <div id="promo rounded" style="background-image:url({% static 'img/hardware2.jpg' %})">
         <div class="container py-2">
@@ -69,6 +71,7 @@
       <div class="bd-example"></div>
       </div>
     </div>
+    {% endblock %}
     <div class="container">
       {% block content %}
       {% endblock %}

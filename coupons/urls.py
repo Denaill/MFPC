@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^apply/$', views.coupon_apply, name='apply'),
+    url(r'^promociones$', views.promociones, name='promociones')
 ]
