@@ -8,7 +8,7 @@ from django.views.generic import ListView
 class ForoList(ListView):
     model = Foro
     template_name = "foro/foro_list.html"
-    paginate_by = 5
+    
 
 def foro_save(request):
     if request.method == 'POST':

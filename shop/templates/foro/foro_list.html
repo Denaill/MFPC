@@ -41,7 +41,7 @@
                                 <tr>
                                     <td>{{ foro.asunto }}</td>
                                     <td>{{ foro.nombre_usuario }}</td>
-                                    <td>{{ foro.fecha_pub }}</td>
+                                    <td><span style="display:block;text-overflow: ellipsis;width: 109px;overflow: hidden; white-space: nowrap;">{{ foro.fecha_pub }}</span></td>
                                     <td><a class="rounded btn btn-outline-success btn-sm" href="{% url 'foro:foro_vermas' foro.id%}">Ver más</a>
                                 </tr>
                                 {% endfor %}

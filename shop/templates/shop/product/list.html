@@ -9,7 +9,7 @@
       <div id="promo rounded" style="background-image:url({% static 'img/hardware2.jpg' %})">
         <div class="container py-2">
           <div class="jumbotron rounded my-auto">
-            <h1 style="font-family: Acme, sans-serif;"><strong>PRODUCTOS</strong></h1>
+            <h1 style="font-family: Acme, sans-serif;"><strong>{% if category %}{{ category.name }}{% else %}PRODUCTOS{% endif %}</strong></h1>
           </div>
         </div>
       <div class="bd-example"></div>
@@ -34,7 +34,6 @@
       </div>
 
       <div class="col-md-9">
-        <h1>{% if category %}{{ category.name }}{% else %}Productos{% endif %}</h1>
 
         {% for product in products %}
           <div class="col-sm-6 col-md-4">
